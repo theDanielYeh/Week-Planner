@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="layout.css">
 </head>
+
 <body>
   <header>
     <h1>Weekly Planner</h1>
@@ -76,12 +78,37 @@
 
 
 
+  <!-- edit entry might share the same code / just modified functionality -->
+  <div class="modal" id="add-entry-modal">
+    <h1>Add/edit Entry</h1>
 
-  <div class="modal" id="add-entry-modal"></div>
+    <div class="row">
+      <select name="add-day" id="add-day">
+        <option value="">Day of Week</option>
+        <option value="mon">mon</option>
+        <option value="tue">tue</option>
+        <option value="wed">wed</option>
+        <option value="thr">thr</option>
+        <option value="fri">fri</option>
+        <option value="sat">sat</option>
+        <option value="sun">sun</option>
+      </select>
+
+      <input type="time">
+    </div>
+
+
+  </div>
   <div class="modal" id="edit-entry-modal"></div>
-  <div class="modal" id="delete-entry-modal"></div>
+  <div class="modal" id="delete-entry-modal">
+    <h1>Delete Entry</h1>
+    <p> ARE YOU SURE???!??!?!? </p>
+    <button>yes</button>
+    <button>no</button>
+  </div>
 
 
   <script src="main.js"></script>
 </body>
+
 </html>

@@ -6,4 +6,11 @@ const $modal_add = document.querySelector('add-entry-modal');
 const $modal_edit = document.querySelector('edit-entry-modal');
 const $modal_delete = document.querySelector('delete-entry-modal');
 
-const $add_entry = document.querySelector('.add-entry');
+const $addEvent = document.querySelector('.add-entry');
+
+$addEvent.addEventListener('click', function (event) {
+  // reveal modal
+  // put form data from modal into data.events
+  // hide modal
+  // rerender eventDOM
+});
