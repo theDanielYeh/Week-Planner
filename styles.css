@@ -11,9 +11,6 @@ header {
   display: flex;
 }
 
-.day-of-week {
-}
-
 .row.day-select {
   justify-content: space-evenly;
 }
@@ -21,6 +18,7 @@ header {
 /* styles.css | http://127.0.0.1:5500/styles.css */
 
 .day-of-week {
+  width: 10%;
   padding: 1.2em 1em;
   background-color: white;
   border-color: black;
@@ -35,4 +33,19 @@ div.row:nth-child(2) {
 .add-entry {
   margin-block: 2em;
   padding: 1em 2em;
+}
+
+table {
+  width: 75%;
+  border: solid;
+  margin: 0% auto;
+}
+
+h2 {
+  text-align: center;
+  margin: 2% auto;
+}
+
+tr:nth-child(2n) {
+  background-color: gray;
 }
