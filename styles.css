@@ -1,0 +1,38 @@
+/* Inline #2 | http://127.0.0.1:5500/index.html */
+
+header {
+  text-align: center;
+}
+
+/* Inline #2 | http://127.0.0.1:5500/index.html */
+
+.row.day-select {
+  display: fl;
+  display: flex;
+}
+
+.day-of-week {
+}
+
+.row.day-select {
+  justify-content: space-evenly;
+}
+
+/* styles.css | http://127.0.0.1:5500/styles.css */
+
+.day-of-week {
+  padding: 1.2em 1em;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+}
+
+div.row:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.add-entry {
+  margin-block: 2em;
+  padding: 1em 2em;
+}
