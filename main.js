@@ -42,11 +42,13 @@ $modalForm.addEventListener('submit', function (event) {
   // then either way you rerender the whole dom
 
   if (data.editing) {
+    console.log(data.editing);
     // below for loop not registering, need to figure out how to find the object
-    for (const iteratedevent of data.events) {
-      if (iteratedevent.entryID + '' === event.target.className.split('-')[2]) {
-        console.log(data.events);
-        console.log(iteratedevent);
+    for (var i = 0; i < data.events.length; i++) {
+      if (String(data.events[i].entryID) === data.currentID) {
+        data.events[i].day = $modalForm.elements['add-day'].value;
+        data.events[i].time = $modalForm.elements['add-time'].value;
+        data.events[i].description = $modalForm.elements.description.value;
       }
     }
   } else {
@@ -71,6 +73,7 @@ $eventRowContainer.addEventListener('click', function (event) {
   if (event.target.className.includes('entryid')) {
     if (event.target.className.includes('update')) {
       data.editing = true;
+      data.currentID = event.target.className.split('-')[2];
       console.log('entryid clicked update functionality');
       $modalBackground.classList.toggle('hidden');
       $modalAdd.classList.toggle('hidden');
@@ -147,3 +150,5 @@ function entryObjectToDOM(object) {
 
   $eventRowContainer.appendChild($tr);
 }
+
+// delete button below//
