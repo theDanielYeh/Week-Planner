@@ -1,3 +1,5 @@
+/* exported data */
+
 const data = {
   events: [],
   view: null,

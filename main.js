@@ -1,3 +1,5 @@
+/* global data */
+/* exported data */
 /* eslint-disable no-unused-vars */
 
 const $dayOfWeekList = document.querySelectorAll('.day-of-week');
@@ -30,11 +32,7 @@ $addEvent.addEventListener('click', function (event) {
 
 $modalForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  // console.log(event.target.elements.time);
-  // console.log(event.target);
-  console.log($modalForm.elements);
-  // console.log(event.target.value['add-name']);
-  // console.log(event.target);
+
   $modalBackground.classList.toggle('hidden');
   $modalAdd.classList.toggle('hidden');
 
@@ -46,4 +44,32 @@ $modalForm.addEventListener('submit', function (event) {
   };
   data.nextEntryID++;
   data.events.push(newObject);
+  renderEntryTableDOM();
 });
+
+const $eventRowContainer = document.querySelector('.event-row-container');
+
+function renderEntryTableDOM() {
+
+  for (const eventobject of data.events) {
+    entryObjectToDOM(eventobject);
+  }
+}
+
+function entryObjectToDOM(object) {
+  // <tr>
+  //   <td>10:00</td>
+  //   <td>Hop on Zoom</td>
+  // </tr>
+
+  const $tr = document.createElement('tr');
+  const $tdTime = document.createElement('td');
+  $tdTime.textContent = object.time;
+  const $tdDescription = document.createElement('td');
+  $tdDescription.textContent = object.description;
+
+  $tr.appendChild($tdTime);
+  $tr.appendChild($tdDescription);
+
+  $eventRowContainer.appendChild($tr);
+}
