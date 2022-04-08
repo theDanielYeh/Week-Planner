@@ -37,4 +37,13 @@ $modalForm.addEventListener('submit', function (event) {
   // console.log(event.target);
   $modalBackground.classList.toggle('hidden');
   $modalAdd.classList.toggle('hidden');
+
+  var newObject = {
+    day: $modalForm.elements['add-day'].value,
+    time: $modalForm.elements['add-time'].value,
+    description: $modalForm.elements.description.value,
+    entryID: data.nextEntryID
+  };
+  data.nextEntryID++;
+  data.events.push(newObject);
 });
