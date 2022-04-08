@@ -36,18 +36,41 @@ $modalForm.addEventListener('submit', function (event) {
   $modalBackground.classList.toggle('hidden');
   $modalAdd.classList.toggle('hidden');
 
-  var newObject = {
-    day: $modalForm.elements['add-day'].value,
-    time: $modalForm.elements['add-time'].value,
-    description: $modalForm.elements.description.value,
-    entryID: data.nextEntryID
-  };
-  data.nextEntryID++;
-  data.events.push(newObject);
+  // split if its editing verus not editing
+  // if editing, preload contents, reassign to the data object
+  // else if not editing etc
+  // then either way you rerender the whole dom
+
+  if (data.editing) {
+    // run if editing
+  } else {
+    // this is in add entry mode
+    var newObject = {
+      day: $modalForm.elements['add-day'].value,
+      time: $modalForm.elements['add-time'].value,
+      description: $modalForm.elements.description.value,
+      entryID: data.nextEntryID
+    };
+    data.nextEntryID++;
+    data.events.push(newObject);
+  }
+
   renderEntryTableDOM();
+  data.editing = false;
 });
 
 let $eventRowContainer = document.querySelector('.event-row-container');
+
+$eventRowContainer.addEventListener('click', function (event) {
+  if (event.target.className.includes('entryid')) {
+    if (event.target.className.includes('update')) {
+      data.editing = true;
+      console.log('entryid clicked update functionality');
+    } else if (event.target.className.includes('delete')) {
+      console.log('entryid clicked delete functionality');
+    }
+  }
+});
 
 function renderEntryTableDOM() {
   resetEntryTableDOM();
@@ -65,15 +88,13 @@ function resetEntryTableDOM() {
 }
 
 function entryObjectToDOM(object) {
-  /* <tr>
-//   <td>10:00</td>
-
-//   <td class="flex-space-between">
-//     <span>Hop on Zoom</span>
-//     <span><button>Update</button><button>Delete</button></span>
-//   </td>
-
-// </tr> */
+  // <tr>
+  //   <td>10:00</td>
+  //   <td class="flex-space-between">
+  //     <span>Hop on Zoom</span>
+  //     <span><button>Update</button><button>Delete</button></span>
+  //   </td>
+  // </tr>
 
   const $tr = document.createElement('tr');
   const $tdTime = document.createElement('td');
@@ -85,7 +106,10 @@ function entryObjectToDOM(object) {
   $tdDescription.appendChild($descriptionspan);
 
   const $updateButton = document.createElement('button');
+  $updateButton.classList.add('entryid-update-' + object.entryID);
   const $deleteButton = document.createElement('button');
+  $deleteButton.classList.add('entryid-delete-' + object.entryID);
+
   const $buttonspan = document.createElement('span');
   $updateButton.textContent = 'Update';
   $deleteButton.textContent = 'Delete';
@@ -98,5 +122,3 @@ function entryObjectToDOM(object) {
 
   $eventRowContainer.appendChild($tr);
 }
-
-//
