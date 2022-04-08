@@ -2,9 +2,10 @@
 
 const $day_of_week_list = document.querySelectorAll('.day-of-week');
 const $schedule_events_header = document.querySelector('.schedule-events-header');
-const $modal_add = document.querySelector('add-entry-modal');
-const $modal_edit = document.querySelector('edit-entry-modal');
-const $modal_delete = document.querySelector('delete-entry-modal');
+const $modal_add = document.querySelector('.add-entry-modal');
+const $modal_edit = document.querySelector('.edit-entry-modal');
+const $modal_delete = document.querySelector('.delete-entry-modal');
+const $modal_background = document.querySelector('.modal-background');
 
 const $addEvent = document.querySelector('.add-entry');
 
