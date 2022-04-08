@@ -71,9 +71,10 @@ let $eventRowContainer = document.querySelector('.event-row-container');
 
 $eventRowContainer.addEventListener('click', function (event) {
   if (event.target.className.includes('entryid')) {
+    data.currentID = event.target.className.split('-')[2];
+
     if (event.target.className.includes('update')) {
       data.editing = true;
-      data.currentID = event.target.className.split('-')[2];
       console.log('entryid clicked update functionality');
       $modalBackground.classList.toggle('hidden');
       $modalAdd.classList.toggle('hidden');
@@ -95,7 +96,12 @@ $eventRowContainer.addEventListener('click', function (event) {
       // $modalForm.elements.description.value;
 
     } else if (event.target.className.includes('delete')) {
-      console.log('entryid clicked delete functionality');
+      for (var i = 0; i < data.events.length; i++) {
+        if (String(data.events[i].entryID) === data.currentID) {
+          data.events.splice(i, 1);
+        }
+      }
+      renderEntryTableDOM();
     }
   }
 });
@@ -103,6 +109,7 @@ $eventRowContainer.addEventListener('click', function (event) {
 function renderEntryTableDOM() {
   resetEntryTableDOM();
   for (const eventobject of data.events) {
+    // if it's the day.. then we publish
     entryObjectToDOM(eventobject);
   }
 }
@@ -152,3 +159,9 @@ function entryObjectToDOM(object) {
 }
 
 // delete button below//
+
+// when you click on day button, change data.currentday
+// depending on data.current day, adjust the scheduled events for DAYVARIABLE
+// in the rendering function, only post it, if it's the current day.
+
+// future todo, order by time, right now it's just entry order.
