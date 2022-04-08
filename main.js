@@ -65,19 +65,38 @@ function resetEntryTableDOM() {
 }
 
 function entryObjectToDOM(object) {
-  // <tr class="entry">
-  //   <td>10:00</td>
-  //   <td>Hop on Zoom</td>
-  // </tr>
+  /* <tr>
+//   <td>10:00</td>
+
+//   <td class="flex-space-between">
+//     <span>Hop on Zoom</span>
+//     <span><button>Update</button><button>Delete</button></span>
+//   </td>
+
+// </tr> */
 
   const $tr = document.createElement('tr');
   const $tdTime = document.createElement('td');
   $tdTime.textContent = object.time;
   const $tdDescription = document.createElement('td');
-  $tdDescription.textContent = object.description;
+  $tdDescription.className = 'flex-space-between';
+  const $descriptionspan = document.createElement('span');
+  $descriptionspan.textContent = object.description;
+  $tdDescription.appendChild($descriptionspan);
+
+  const $updateButton = document.createElement('button');
+  const $deleteButton = document.createElement('button');
+  const $buttonspan = document.createElement('span');
+  $updateButton.textContent = 'Update';
+  $deleteButton.textContent = 'Delete';
+  $buttonspan.appendChild($updateButton);
+  $buttonspan.appendChild($deleteButton);
+  $tdDescription.appendChild($buttonspan);
 
   $tr.appendChild($tdTime);
   $tr.appendChild($tdDescription);
 
   $eventRowContainer.appendChild($tr);
 }
+
+//

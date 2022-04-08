@@ -50,6 +50,23 @@ tr:nth-child(2n) {
   background-color: gray;
 }
 
-.ml-auto {
-  margin-left: auto;
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+td.flex-space-between > span > button:nth-child(2) {
+  margin-right: 5rem;
+  color: white;
+  background-color: #cc0a00;
+  border: solid black;
+  padding: 0.2rem 1.5rem;
+}
+
+td.flex-space-between > span > button:nth-child(1) {
+  margin-right: 0.5rem;
+  color: white;
+  background-color: #2b78e4;
+  border: solid black;
+  padding: 0.2rem 1.5rem;
 }
