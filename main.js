@@ -42,7 +42,13 @@ $modalForm.addEventListener('submit', function (event) {
   // then either way you rerender the whole dom
 
   if (data.editing) {
-    // run if editing
+    // below for loop not registering, need to figure out how to find the object
+    for (const iteratedevent of data.events) {
+      if (iteratedevent.entryID + '' === event.target.className.split('-')[2]) {
+        console.log(data.events);
+        console.log(iteratedevent);
+      }
+    }
   } else {
     // this is in add entry mode
     var newObject = {
@@ -69,11 +75,21 @@ $eventRowContainer.addEventListener('click', function (event) {
       $modalBackground.classList.toggle('hidden');
       $modalAdd.classList.toggle('hidden');
 
-      event.target.className.split('-');
-      console.log(event.target.className.split('-'));
-      $modalForm.elements['add-day'].value;
-      $modalForm.elements['add-time'].value;
-      $modalForm.elements.description.value;
+      // this is the entryid as a  string. need to get this into an object.
+      // event.target.className.split('-')[2];
+
+      for (const iteratedevent of data.events) {
+        if (iteratedevent.entryID + '' === event.target.className.split('-')[2]) {
+          $modalForm.elements['add-day'].value = iteratedevent.day;
+          $modalForm.elements['add-time'].value = iteratedevent.time;
+          $modalForm.elements.description.value = iteratedevent.description;
+        }
+      }
+
+      // the vars we want to assign to prefill the edit page
+      // $modalForm.elements['add-day'].value;
+      // $modalForm.elements['add-time'].value;
+      // $modalForm.elements.description.value;
 
     } else if (event.target.className.includes('delete')) {
       console.log('entryid clicked delete functionality');
