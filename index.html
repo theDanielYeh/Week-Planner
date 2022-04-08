@@ -82,23 +82,25 @@
   <div class="modal-background hidden">
     <div class="modal-box hidden" id="add-entry-modal">
       <h1>Add/edit Entry</h1>
-      <div class="row">
-        <select name="add-day" id="add-day">
-          <option value="">Day of Week</option>
-          <option value="mon">mon</option>
-          <option value="tue">tue</option>
-          <option value="wed">wed</option>
-          <option value="thr">thr</option>
-          <option value="fri">fri</option>
-          <option value="sat">sat</option>
-          <option value="sun">sun</option>
-        </select>
-        <input type="time">
-      </div>
-      <textarea name="description" id="description" cols="75" rows="10" placeholder="Description"></textarea>
-      <div class="row">
-        <button class="modal-submit">Submit</button>
-      </div>
+      <form action="" class="modal-form">
+        <div class="row">
+          <select name="add-day" id="add-day">
+            <option value="">Day of Week</option>
+            <option value="mon">mon</option>
+            <option value="tue">tue</option>
+            <option value="wed">wed</option>
+            <option value="thr">thr</option>
+            <option value="fri">fri</option>
+            <option value="sat">sat</option>
+            <option value="sun">sun</option>
+          </select>
+          <input type="time" name="add-time">
+        </div>
+        <textarea name="description" id="description" cols="75" rows="10" placeholder="Description"></textarea>
+        <div class="row">
+          <button class="modal-submit">Submit</button>
+        </div>
+      </form>
     </div>
 
 
