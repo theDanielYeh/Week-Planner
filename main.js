@@ -50,9 +50,15 @@ $modalForm.addEventListener('submit', function (event) {
 const $eventRowContainer = document.querySelector('.event-row-container');
 
 function renderEntryTableDOM() {
-
   for (const eventobject of data.events) {
     entryObjectToDOM(eventobject);
+  }
+}
+
+function resetEntryTableDOM() {
+  for (const child of $eventRowContainer.children) {
+    console.log(child);
+    child.remove();
   }
 }
 
