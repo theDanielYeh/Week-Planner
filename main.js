@@ -17,7 +17,7 @@ $addEvent.addEventListener('click', function (event) {
   // reveal modal
   $modalBackground.classList.toggle('hidden');
   $modalAdd.classList.toggle('hidden');
-
+  $modalForm.reset();
   // put form data from modal into data.events
   // hide modal
   // rerender eventDOM
@@ -66,6 +66,15 @@ $eventRowContainer.addEventListener('click', function (event) {
     if (event.target.className.includes('update')) {
       data.editing = true;
       console.log('entryid clicked update functionality');
+      $modalBackground.classList.toggle('hidden');
+      $modalAdd.classList.toggle('hidden');
+
+      event.target.className.split('-');
+      console.log(event.target.className.split('-'));
+      $modalForm.elements['add-day'].value;
+      $modalForm.elements['add-time'].value;
+      $modalForm.elements.description.value;
+
     } else if (event.target.className.includes('delete')) {
       console.log('entryid clicked delete functionality');
     }

@@ -53,7 +53,7 @@
       <h1>Add/edit Entry</h1>
       <form action="" class="modal-form">
         <div class="row">
-          <select name="add-day" id="add-day">
+          <select name="add-day" id="add-day" required>
             <option value="">Day of Week</option>
             <option value="mon">mon</option>
             <option value="tue">tue</option>
@@ -63,9 +63,9 @@
             <option value="sat">sat</option>
             <option value="sun">sun</option>
           </select>
-          <input type="time" name="add-time">
+          <input type="time" name="add-time" required>
         </div>
-        <textarea name="description" id="description" cols="75" rows="10" placeholder="Description"></textarea>
+        <textarea name="description" id="description" cols="75" rows="10" placeholder="Description" required></textarea>
         <div class="row">
           <button class="modal-submit">Submit</button>
         </div>
