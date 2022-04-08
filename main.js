@@ -47,23 +47,25 @@ $modalForm.addEventListener('submit', function (event) {
   renderEntryTableDOM();
 });
 
-const $eventRowContainer = document.querySelector('.event-row-container');
+let $eventRowContainer = document.querySelector('.event-row-container');
 
 function renderEntryTableDOM() {
+  resetEntryTableDOM();
   for (const eventobject of data.events) {
     entryObjectToDOM(eventobject);
   }
 }
 
 function resetEntryTableDOM() {
-  for (const child of $eventRowContainer.children) {
-    console.log(child);
-    child.remove();
+  $eventRowContainer = document.querySelector('.event-row-container');
+  const length = $eventRowContainer.children.length;
+  for (let i = 0; i < length; i++) {
+    $eventRowContainer.children[0].remove();
   }
 }
 
 function entryObjectToDOM(object) {
-  // <tr>
+  // <tr class="entry">
   //   <td>10:00</td>
   //   <td>Hop on Zoom</td>
   // </tr>

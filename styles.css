@@ -49,3 +49,7 @@ h2 {
 tr:nth-child(2n) {
   background-color: gray;
 }
+
+.ml-auto {
+  margin-left: auto;
+}
