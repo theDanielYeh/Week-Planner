@@ -127,7 +127,17 @@ function deleteEvent() {
 
 function renderEntryTableDOM() {
   resetEntryTableDOM();
-  for (const eventobject of data.events) {
+
+  // homes.sort(function (a, b) {
+  //   return parseFloat(a.price) - parseFloat(b.price);
+  // });
+  var sortedevents = data.events.sort((a, b) => {
+    return new Date(a.time) > new Date(b.time);
+  });
+  console.log(sortedevents);
+  console.log(data.events);
+
+  for (const eventobject of sortedevents) {
     if (eventobject.day === data.currentDay) {
       entryObjectToDOM(eventobject);
     }
