@@ -6,7 +6,7 @@ const $dayOfWeekList = document.querySelectorAll('.day-of-week');
 const $scheduleEventsHeader = document.querySelector('.schedule-events-header');
 const $modalAdd = document.querySelector('#add-entry-modal');
 const $modalEdit = document.querySelector('.edit-entry-modal');
-const $modalDelete = document.querySelector('.delete-entry-modal');
+const $modalDelete = document.querySelector('#delete-entry-modal');
 const $modalBackground = document.querySelector('.modal-background');
 const $modalSubmit = document.querySelector('.modal-submit');
 const $modalForm = document.querySelector('.modal-form');
@@ -96,20 +96,41 @@ $eventRowContainer.addEventListener('click', function (event) {
       // $modalForm.elements.description.value;
 
     } else if (event.target.className.includes('delete')) {
-      for (var i = 0; i < data.events.length; i++) {
-        if (String(data.events[i].entryID) === data.currentID) {
-          data.events.splice(i, 1);
-        }
-      }
-      renderEntryTableDOM();
+      $modalBackground.classList.toggle('hidden');
+      $modalDelete.classList.toggle('hidden');
     }
   }
 });
 
+const $modalDeleteYes = document.querySelector('.modal-delete-yes');
+const $modalDeleteNo = document.querySelector('.modal-delete-no');
+
+$modalDeleteYes.addEventListener('click', function (event) {
+  deleteEvent();
+  $modalBackground.classList.toggle('hidden');
+  $modalDelete.classList.toggle('hidden');
+});
+
+$modalDeleteNo.addEventListener('click', function (event) {
+  $modalBackground.classList.toggle('hidden');
+  $modalDelete.classList.toggle('hidden');
+});
+
+function deleteEvent() {
+  for (var i = 0; i < data.events.length; i++) {
+    if (String(data.events[i].entryID) === data.currentID) {
+      data.events.splice(i, 1);
+    }
+  }
+  renderEntryTableDOM();
+}
+
 function renderEntryTableDOM() {
   resetEntryTableDOM();
   for (const eventobject of data.events) {
-    entryObjectToDOM(eventobject);
+    if (eventobject.day === data.currentDay) {
+      entryObjectToDOM(eventobject);
+    }
   }
 }
 
@@ -157,8 +178,6 @@ function entryObjectToDOM(object) {
   $eventRowContainer.appendChild($tr);
 }
 
-// delete button below//
-
 // when you click on day button, change data.currentday
 // depending on data.current day, adjust the scheduled events for DAYVARIABLE
 // in the rendering function, only post it, if it's the current day.
@@ -168,10 +187,10 @@ var $dayselectcontainer = document.querySelector('.day-select');
 $dayselectcontainer.addEventListener('click', switchView);
 
 function switchView(event) {
-  console.log(event.target.getAttribute('id'));
+  // console.log(event.target.getAttribute('id'));
   if (event.target.getAttribute('id')) {
     data.currentDay = event.target.getAttribute('id');
+    $scheduleEventsHeader.textContent = 'Scheduled Events for ' + event.target.getAttribute('id');
   }
-  $scheduleEventsHeader.textContent = 'Scheduled Events for ' + event.target.getAttribute('id');
   renderEntryTableDOM();
 }

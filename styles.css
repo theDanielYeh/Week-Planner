@@ -46,7 +46,7 @@ h2 {
   margin: 2% auto;
 }
 
-tr:nth-child(2n) {
+tr:nth-child(even) {
   background-color: gray;
 }
 
