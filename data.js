@@ -4,7 +4,8 @@ const data = {
   events: [],
   view: null,
   editing: null,
-  nextEntryID: 1
+  nextEntryID: 1,
+  currentDay: 'Monday'
 };
 
 // data.event = [

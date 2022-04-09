@@ -109,7 +109,6 @@ $eventRowContainer.addEventListener('click', function (event) {
 function renderEntryTableDOM() {
   resetEntryTableDOM();
   for (const eventobject of data.events) {
-    // if it's the day.. then we publish
     entryObjectToDOM(eventobject);
   }
 }
@@ -165,3 +164,14 @@ function entryObjectToDOM(object) {
 // in the rendering function, only post it, if it's the current day.
 
 // future todo, order by time, right now it's just entry order.
+var $dayselectcontainer = document.querySelector('.day-select');
+$dayselectcontainer.addEventListener('click', switchView);
+
+function switchView(event) {
+  console.log(event.target.getAttribute('id'));
+  if (event.target.getAttribute('id')) {
+    data.currentDay = event.target.getAttribute('id');
+  }
+  $scheduleEventsHeader.textContent = 'Scheduled Events for ' + event.target.getAttribute('id');
+  renderEntryTableDOM();
+}
